@@ -1,7 +1,14 @@
 {
-    "extends": "standard",
-    "plugins": [
-        "standard",
-        "promise"
-    ]
+  "extends": [
+    "plugin:prettier/recommended",
+    "standard"
+  ],
+  "plugins": [
+    "standard",
+    "promise",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }

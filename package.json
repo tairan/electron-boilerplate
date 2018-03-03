@@ -17,6 +17,8 @@
   "license": "MIT",
   "devDependencies": {
     "asar": "^0.14.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "css-loader": "^0.27.3",
@@ -25,8 +27,11 @@
     "electron-packager": "^8.6.0",
     "electron-winstaller": "^2.5.2",
     "eslint": "^3.18.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
+    "prettier": "^1.11.1",
     "ts-loader": "^2.0.3",
     "typescript": "^2.2.1"
   },
