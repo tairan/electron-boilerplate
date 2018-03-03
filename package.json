@@ -9,10 +9,6 @@
     "dev": "electron . --debug",
     "build": "electron-builder --dir",
     "dist": "electron-builder",
-    "package-mac": "electron-packager . electron-boilerplate --platform=darwin --arch=x64 --overwrite --icon=./resources/icon.icns --out=out --asar --osx-sign.identity=\"Tairan Wang\" --extend-info=assets/mac/info.plist",
-    "package-win": "electron-packager . electron-boilerplate --platform=win32 --arch=x64 --overwrite --icon=./resources/icon.ico --out=out ",
-    "package-linux": "electron-packager . electron-boilerplate  --platform=linux --arch=x64 --overwrite  --out=out --asar",
-    "package-all": "electron-packager . electron-boilerplate  --platform=all --arch=all",
     "test": "mocha"
   },
   "author": "Tairan Wang",

@@ -2,7 +2,7 @@ appId: "Electron-Boilerplate.app"
 productName: "Electron-Boilerplate"
 copyright: "Copyright © year ${author}"
 directories:
-  output: ".dist"
+  output: "dist"
   buildResources: "build"
 mac:
   icon: "build/icon.icns"
