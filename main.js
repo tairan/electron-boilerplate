@@ -1,8 +1,14 @@
 const path = require('path')
+const glob = require('glob')
 const electron = require('electron')
+const autoUpdater = require('./auto-updater')
 
 const BrowserWindow = electron.BrowserWindow
 const app = electron.app
+
+const debug = /--debug/.test(process.argv[2])
+
+if (process.mas) app.setName('Electron Application Boilerplate')
 
 var mainWindow = null
 
@@ -10,6 +16,8 @@ function initialize() {
   var shouldQuit = makeSingleInstance()
 
   if (shouldQuit) return app.quit()
+
+  loadResource()
 
   function createWindow() {
     var windowOptions = {
@@ -19,31 +27,41 @@ function initialize() {
       title: app.getName()
     }
 
+    if (process.platform === 'linux') {
+      windowOptions.icon = path.join(__dirname, '/assets/app-icon/linux/app.png')
+    }
+
     mainWindow = new BrowserWindow(windowOptions)
     mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
-    mainWindow.on('closed', function() {
+
+    if (debug) {
+      mainWindow.webContents.openDevTools()
+      mainWindow.maximize()
+      require('devtron').install()
+    }
+
+    mainWindow.on('closed', function () {
       mainWindow = null
     })
   }
 
-  app.on('ready', function() {
+  app.on('ready', function () {
     createWindow()
+    autoUpdater.initialize()
   })
 
-  app.on('window-all-closed', function() {
+  app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
       app.quit()
     }
   })
 
-  app.on('activate', function() {
+  app.on('activate', function () {
     if (mainWindow === null) {
       createWindow()
     }
   })
 }
-
-
 
 // Make this app a single instance app.
 //
@@ -55,7 +73,7 @@ function initialize() {
 function makeSingleInstance() {
   if (process.mas) return false
 
-  return app.makeSingleInstance(function() {
+  return app.makeSingleInstance(function () {
     if (mainWindow) {
       if (mainWindow.isMinimized()) mainWindow.restore()
       mainWindow.focus()
@@ -63,15 +81,22 @@ function makeSingleInstance() {
   })
 }
 
+// Require each JS file in the main-process dir
+function loadResource() {
+  const files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
+  files.forEach((file) => { require(file) })
+  autoUpdater.updateMenu()
+}
+
 // Handle Squirrel on Windows startup events
 switch (process.argv[1]) {
   case '--squirrel-install':
-    autoUpdater.createShortcut(function() {
+    autoUpdater.createShortcut(function () {
       app.quit()
     })
     break
   case '--squirrel-uninstall':
-    autoUpdater.removeShortcut(function() {
+    autoUpdater.removeShortcut(function () {
       app.quit()
     })
     break

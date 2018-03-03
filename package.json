@@ -7,10 +7,10 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --debug",
-    "pack-mac": "electron-packager . electron-boilerplate --platform=darwin --arch=x64 --overwrite --icon=assets/app-icon/mac/app.icns --out=out --asar --osx-sign.identity=\"Tairan Wang\" --extend-info=assets/mac/info.plist",
-    "pack-win": "electron-packager . electron-boilerplate --platform=win32 --arch=x64 --overwrite --icon=./assets/app-icon/win/app.ico --out=out ",
-    "pack-linux": "electron-packager . electron-boilerplate  --platform=linux --arch=x64 --overwrite  --out=out --asar",
-    "pack-all": "electron-packager . electron-boilerplate  --platform=all --arch=all",
+    "package-mac": "electron-packager . electron-boilerplate --platform=darwin --arch=x64 --overwrite --icon=./resources/icon.icns --out=out --asar --osx-sign.identity=\"Tairan Wang\" --extend-info=assets/mac/info.plist",
+    "package-win": "electron-packager . electron-boilerplate --platform=win32 --arch=x64 --overwrite --icon=./resources/icon.ico --out=out ",
+    "package-linux": "electron-packager . electron-boilerplate  --platform=linux --arch=x64 --overwrite  --out=out --asar",
+    "package-all": "electron-packager . electron-boilerplate  --platform=all --arch=all",
     "test": "mocha"
   },
   "author": "Tairan Wang",
