@@ -7,6 +7,8 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --debug",
+    "build": "electron-builder --dir",
+    "dist": "electron-builder",
     "package-mac": "electron-packager . electron-boilerplate --platform=darwin --arch=x64 --overwrite --icon=./resources/icon.icns --out=out --asar --osx-sign.identity=\"Tairan Wang\" --extend-info=assets/mac/info.plist",
     "package-win": "electron-packager . electron-boilerplate --platform=win32 --arch=x64 --overwrite --icon=./resources/icon.ico --out=out ",
     "package-linux": "electron-packager . electron-boilerplate  --platform=linux --arch=x64 --overwrite  --out=out --asar",
@@ -23,21 +25,16 @@
     "chai-as-promised": "^6.0.0",
     "css-loader": "^0.27.3",
     "electron": "^1.8.2",
-    "electron-installer-dmg": "^0.2.1",
-    "electron-packager": "^8.6.0",
-    "electron-winstaller": "^2.5.2",
+    "electron-builder": "^20.2.0",
     "eslint": "^3.18.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
-    "prettier": "^1.11.1",
-    "ts-loader": "^2.0.3",
-    "typescript": "^2.2.1"
+    "prettier": "^1.11.1"
   },
   "dependencies": {
-    "@types/react": "^15.0.20",
-    "@types/react-dom": "^0.14.23",
+    "glob": "^7.1.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },

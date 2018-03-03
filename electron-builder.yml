@@ -1,0 +1,13 @@
+appId: "Electron-Boilerplate.app"
+productName: "Electron-Boilerplate"
+copyright: "Copyright © year ${author}"
+directories:
+  output: ".dist"
+  buildResources: "build"
+mac:
+  icon: "build/icon.icns"
+win:
+  target: "nsis"
+  icon: "build/icon.ico"
+nsis:
+  installerIcon: "build/icon.ico"
