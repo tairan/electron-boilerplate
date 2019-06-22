@@ -73,12 +73,18 @@ function initialize() {
 function makeSingleInstance() {
   if (process.mas) return false
 
-  return app.makeSingleInstance(function () {
+  if (app.hasSingleInstanceLock()) {
     if (mainWindow) {
       if (mainWindow.isMinimized()) mainWindow.restore()
       mainWindow.focus()
     }
-  })
+  }
+  else {
+    const isSingle = app.requestSingleInstanceLock();
+    if (!isSingle) {
+      app.quit();
+    }
+  }
 }
 
 // Require each JS file in the main-process dir
